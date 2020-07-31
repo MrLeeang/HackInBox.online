@@ -1,0 +1,10 @@
+time="2020-07-31 15:46:53" level=debug msg="记录一下日志Debug" name=hanyun
+time="2020-07-31 15:47:29" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:37" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:37" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:37" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:38" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:38" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:47:38" level=info msg="| 200 |            0s |             ::1 | GET | / |"
+time="2020-07-31 15:50:36" level=debug msg=fdfasd
+time="2020-07-31 15:54:24" level=debug msg=fdfasd name=HackInBox
