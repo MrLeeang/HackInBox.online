@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-// QueryVMS 查询所有虚拟机
+// QueryUsers 查询所有虚拟机
 func QueryUsers() []map[string]interface{} {
 	//results, err := Engine.QueryString("select * from user")
 	userModel := new(models.UserModel)
