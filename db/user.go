@@ -7,20 +7,20 @@ import (
 )
 
 // QueryUsers 查询所有用户
-func QueryUsers() []map[string]interface{} {
-	//results, err := Engine.QueryString("select * from user")
-	userModel := new(models.UserModel)
-	//results, err := Engine.Get(userModel)
-	//results, err := Engine.Asc("id").Find(userModel)
-	results, err := Engine.Asc("Id").Get(userModel)
-	fmt.Println(results)
-	fmt.Println(userModel)
+func QueryUsers() []*models.UserModel {
+	// 定义一个数组存放结构体
+	// allUsers := []*models.UserModel{}
+	var allUsers []*models.UserModel
+	// 查询
+	var err = Engine.Find(&allUsers)
 
 	if err != nil {
 		utils.Utilslogger.Error(err)
-		return []map[string]interface{}{}
 	}
 
-	//return results
-	return []map[string]interface{}{}
+	for _, user := range allUsers {
+		fmt.Println(user)
+	}
+
+	return allUsers
 }
