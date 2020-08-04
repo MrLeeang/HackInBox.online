@@ -1,7 +1,7 @@
 package db
 
 import (
-	"HackInBox.online/model"
+	"HackInBox.online/models"
 	"HackInBox.online/utils"
 	"fmt"
 )
@@ -9,8 +9,8 @@ import (
 // QueryVMS 查询所有虚拟机
 func QueryUsers() []map[string]interface{} {
 	//results, err := Engine.QueryString("select * from user")
-	user := new(model.User)
-	results, err := Engine.Get(user)
+	userModel := new(models.UserModel)
+	results, err := Engine.Get(userModel)
 	fmt.Println(results)
 	if err != nil {
 		utils.Utilslogger.Error(err)
