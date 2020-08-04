@@ -1,7 +1,7 @@
 package model
 
-// 虚拟机
-type Vm struct {
+// 战队
+type Team struct {
 	id   int
 	uuid string
 	name string
