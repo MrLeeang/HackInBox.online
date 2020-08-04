@@ -8,3 +8,7 @@ import (
 func GetUsers() []*models.UserModel {
 	return db.QueryUsers()
 }
+
+func GetUserByUuid(uuid string) *models.UserModel {
+	return db.GetUserByUuid(uuid)
+}

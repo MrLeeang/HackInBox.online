@@ -3,7 +3,6 @@ package db
 import (
 	"HackInBox.online/models"
 	"HackInBox.online/utils"
-	"fmt"
 )
 
 // QueryUsers 查询所有用户
@@ -18,9 +17,18 @@ func QueryUsers() []*models.UserModel {
 		utils.Utilslogger.Error(err)
 	}
 
-	for _, user := range allUsers {
-		fmt.Println(user)
+	return allUsers
+}
+
+func GetUserByUuid(uuid string) *models.UserModel {
+	// 定义一个数组存放结构体
+	var User *models.UserModel
+	// 查询
+	var err = Engine.Where("uuid=?", uuid).Find(&User)
+
+	if err != nil {
+		utils.Utilslogger.Error(err)
 	}
 
-	return allUsers
+	return User
 }
