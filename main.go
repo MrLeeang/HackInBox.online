@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) > 0 {
+	if len(os.Args) > 1 {
 		operation := os.Args[1]
 		if operation == "create_db" {
 			utils.Utilslogger.Info("create db...")
