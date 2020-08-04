@@ -10,10 +10,10 @@ import (
 
 const (
 	dbType = "mysql"
-	dbHost = "192.168.197.200"
-	dbPort = "3306"
+	dbHost = "118.31.237.114"
+	dbPort = "3307"
 	dbUser = "root"
-	dbPass = "maxcloudr"
+	dbPass = "123456"
 	dbName = "HackInBox"
 )
 
