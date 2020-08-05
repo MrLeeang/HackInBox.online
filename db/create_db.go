@@ -6,10 +6,10 @@ import (
 )
 
 func CreateDb() {
-	utils.Utilslogger.Info("create UserModel")
+	utils.UtilsLogger.Info("create UserModel")
 	Engine.Sync2(new(models.UserModel))
-	utils.Utilslogger.Info("create TeamModel")
+	utils.UtilsLogger.Info("create TeamModel")
 	Engine.Sync2(new(models.TeamModel))
-	utils.Utilslogger.Info("create VmModel")
+	utils.UtilsLogger.Info("create VmModel")
 	Engine.Sync2(new(models.VmModel))
 }

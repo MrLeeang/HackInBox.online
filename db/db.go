@@ -23,13 +23,13 @@ func CreateEngine() *xorm.Engine {
 	dbString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", dbUser, dbPass, dbHost, dbPort, dbName)
 	engine, err := xorm.NewEngine(dbType, dbString)
 	if err != nil {
-		utils.Utilslogger.Error(err)
+		utils.UtilsLogger.Error(err)
 	}
 	// 设置连接池空闲数
 	engine.SetMaxIdleConns(20)
 	// 最大打开连接数
 	engine.SetMaxOpenConns(100)
-	engine.SetLogger(utils.Utilslogger)
+	engine.SetLogger(utils.UtilsLogger)
 	return engine
 }
 

@@ -11,8 +11,10 @@ import (
 
 type MyFormatter struct{}
 
+// 设置日志格式
 func (s *MyFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	timestamp := time.Now().Local().Format("2006/01/02 15:04:05")
+	// 日志格式
 	msg := fmt.Sprintf("%s [%s] %s:%v	%s\n", timestamp, strings.ToUpper(entry.Level.String()), entry.Caller.File, entry.Caller.Line, entry.Message)
 	return []byte(msg), nil
 }
@@ -53,6 +55,7 @@ func Logger() *logrus.Logger {
 	// 日志输出
 	logger.SetOutput(os.Stdout)
 
+	// 显示行号
 	logger.SetReportCaller(true)
 
 	// 设置日志格式

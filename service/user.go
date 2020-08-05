@@ -12,3 +12,7 @@ func GetUsers() []models.UserModel {
 func GetUserByUuid(uuid string) models.UserModel {
 	return db.GetUserByUuid(uuid)
 }
+
+func GetUserByTeamUuid(teamUuid string) []models.UserModel {
+	return db.DetailUsers(teamUuid)
+}

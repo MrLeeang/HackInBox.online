@@ -1,7 +1,7 @@
 package db
 
 import (
-	models "HackInBox.online/models"
+	"HackInBox.online/models"
 	"HackInBox.online/utils"
 )
 
@@ -14,7 +14,7 @@ func QueryUsers() []models.UserModel {
 	var err = Engine.Find(&allUsers)
 
 	if err != nil {
-		utils.Utilslogger.Error(err)
+		utils.UtilsLogger.Error(err)
 	}
 
 	return allUsers
@@ -27,21 +27,21 @@ func GetUserByUuid(uuid string) models.UserModel {
 	_, err := Engine.Where("uuid = ?", uuid).Get(&User)
 
 	if err != nil {
-		utils.Utilslogger.Error(err)
+		utils.UtilsLogger.Error(err)
 	}
 
 	return User
 }
 
-//func DetailUsers(uuid string) []models.UserModel {
-//	// 定义一个数组存放结构体
-//	var User []models.UserModel
-//	// 查询
-//	var err = Engine.Where("uuid=?", uuid).Find(&User)
-//
-//	if err != nil {
-//		utils.Utilslogger.Error(err)
-//	}
-//
-//	return User
-//}
+func DetailUsers(teamUuid string) []models.UserModel {
+	// 定义一个数组存放结构体
+	var UserList []models.UserModel
+	// 查询
+	var err = Engine.Where("team_uuid=?", teamUuid).Find(&UserList)
+
+	if err != nil {
+		utils.UtilsLogger.Error(err)
+	}
+
+	return UserList
+}

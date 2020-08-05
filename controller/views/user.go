@@ -20,3 +20,11 @@ func ActionUserList(c *gin.Context) {
 		"ret": ret,
 	})
 }
+
+func ActionUserDetailByTeamUuid(c *gin.Context) {
+	teamUuid := c.Query("team_uuid")
+	ret := service.GetUserByTeamUuid(string(teamUuid))
+	c.JSON(200, gin.H{
+		"ret": ret,
+	})
+}

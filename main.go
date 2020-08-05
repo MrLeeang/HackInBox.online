@@ -13,9 +13,9 @@ func main() {
 	if len(os.Args) > 1 {
 		operation := os.Args[1]
 		if operation == "create_db" {
-			utils.Utilslogger.Info("create db...")
+			utils.UtilsLogger.Info("create db...")
 			db.CreateDb()
-			utils.Utilslogger.Info("Success")
+			utils.UtilsLogger.Info("Success")
 		}
 		return
 	}
@@ -27,6 +27,6 @@ func main() {
 
 	r.Use(middleware.Logger())
 	controller.MakRouter(r)
-	utils.Utilslogger.Info("Server Run Success: 0.0.0.0:8080")
-	_ = r.Run(":8080")
+	utils.UtilsLogger.Info("Server Run Success: 0.0.0.0:8080")
+	r.Run(":8080")
 }
