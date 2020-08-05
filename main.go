@@ -27,5 +27,6 @@ func main() {
 
 	r.Use(middleware.Logger())
 	controller.MakRouter(r)
+	utils.Utilslogger.Info("Server Run Success: 0.0.0.0:8080")
 	_ = r.Run(":8080")
 }

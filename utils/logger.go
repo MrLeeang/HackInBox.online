@@ -1,10 +1,21 @@
 package utils
 
 import (
+	"fmt"
 	"os"
+	"strings"
+	"time"
 
 	"github.com/sirupsen/logrus"
 )
+
+type MyFormatter struct{}
+
+func (s *MyFormatter) Format(entry *logrus.Entry) ([]byte, error) {
+	timestamp := time.Now().Local().Format("2006/01/02 15:04:05")
+	msg := fmt.Sprintf("%s [%s] %s:%v	%s\n", timestamp, strings.ToUpper(entry.Level.String()), entry.Caller.File, entry.Caller.Line, entry.Message)
+	return []byte(msg), nil
+}
 
 // Logger 定义日志
 func Logger() *logrus.Logger {
@@ -42,10 +53,11 @@ func Logger() *logrus.Logger {
 	// 日志输出
 	logger.SetOutput(os.Stdout)
 
-	//设置日志格式
-	logger.SetFormatter(&logrus.TextFormatter{
-		TimestampFormat: "2006-01-02 15:04:05",
-	})
+	logger.SetReportCaller(true)
+
+	// 设置日志格式
+	logger.SetFormatter(new(MyFormatter))
+
 	return logger
 }
 

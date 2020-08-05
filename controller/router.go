@@ -9,4 +9,5 @@ import (
 func MakRouter(r *gin.Engine) {
 	r.GET("/", views.ActionVMLIST)
 	r.GET("/user", views.ActionUser)
+	r.GET("/userList", views.ActionUserList)
 }
