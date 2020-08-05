@@ -6,12 +6,8 @@ import (
 )
 
 // ActionVMLIST 查询虚拟机列表
-func ActionVMLIST(c *gin.Context) {
-	ret := service.GetUsers()
-	//utils.Utilslogger.Info(ret)
-	//c.JSON(200, gin.H{
-	//	"message": "Hello world!",
-	//})
+func ActionUser(c *gin.Context) {
+	ret := service.GetUserByUuid("887f1149-d62d-11ea-ac10-0242c0a80007")
 	c.JSON(200, gin.H{
 		"ret": ret,
 	})

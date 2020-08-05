@@ -8,4 +8,5 @@ import (
 // MakRouter 是路由
 func MakRouter(r *gin.Engine) {
 	r.GET("/", views.ActionVMLIST)
+	r.GET("/user", views.ActionUser)
 }
