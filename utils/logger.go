@@ -64,5 +64,5 @@ func Logger() *logrus.Logger {
 	return logger
 }
 
-// Utilslogger 打印日志调用
-var Utilslogger = Logger()
+// UtilsLogger 打印日志调用
+var UtilsLogger = Logger()
