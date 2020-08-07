@@ -5,8 +5,11 @@ import (
 	"HackInBox.online/db"
 	"HackInBox.online/middleware"
 	"HackInBox.online/utils"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
 	"os"
+	"time"
 )
 
 func main() {
@@ -24,9 +27,19 @@ func main() {
 	// gin.DisableConsoleColor()
 
 	r := gin.New()
-
+	// session redis
+	store, _ := redis.NewStore(10, "tcp", utils.RedisAddress, utils.RedisPassword, []byte("secret"))
+	store.Options(sessions.Options{
+		MaxAge: int(30 * time.Minute), //30min
+		Path:   "/",
+	})
+	// 注册session
+	r.Use(sessions.Sessions("GinSession", store))
+	// 注册logger
 	r.Use(middleware.Logger())
+	// 注册路由
 	controller.MakRouter(r)
+	// 启动
 	utils.UtilsLogger.Info("Server Run Success: 0.0.0.0:8080")
 	r.Run(":8080")
 }

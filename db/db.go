@@ -8,20 +8,11 @@ import (
 	"github.com/xormplus/xorm"
 )
 
-const (
-	dbType = "mysql"
-	dbHost = "118.31.237.114"
-	dbPort = "3307"
-	dbUser = "root"
-	dbPass = "123456"
-	dbName = "HackInBox"
-)
-
 // CreateEngine 初始化数据库连接池
 func CreateEngine() *xorm.Engine {
 	var err error
-	dbString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", dbUser, dbPass, dbHost, dbPort, dbName)
-	engine, err := xorm.NewEngine(dbType, dbString)
+	dbString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", utils.DbUser, utils.DbPass, utils.DbHost, utils.DbPort, utils.DbName)
+	engine, err := xorm.NewEngine(utils.DbType, dbString)
 	if err != nil {
 		utils.UtilsLogger.Error(err)
 	}
