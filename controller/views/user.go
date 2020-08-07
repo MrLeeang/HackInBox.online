@@ -53,9 +53,10 @@ func ActionLogin(c *gin.Context) {
 		c.JSON(retCode, gin.H{"ret": ret})
 		return
 	}
-	utils.UtilsLogger.Info(form.Email, form.Password)
-	// 验证账号密码
-	if form.Email != "email" && form.Password != "password" {
+
+	userModels := service.GetUserByEmail(string(form.Email))
+
+	if userModels == nil || userModels[0].Password != form.Password {
 		// 账号密码错误，登录失败
 		retCode := utils.RetCode.HttpUnAuthorized
 		ret["code"] = retCode
@@ -67,6 +68,18 @@ func ActionLogin(c *gin.Context) {
 	retCode := utils.RetCode.Success
 	ret["code"] = retCode
 	ret["error_message"] = utils.ErrorCodeMessage[retCode]
+
+	// 返回数据
+	var data = map[string]interface{}{}
+	data["Name"] = userModels[0].Name
+	data["Id"] = userModels[0].Id
+	data["Email"] = userModels[0].Email
+	data["DisplayName"] = userModels[0].DisplayName
+	data["Name"] = userModels[0].Name
+	data["TeamUuid"] = userModels[0].TeamUuid
+	data["CreatedAt"] = userModels[0].CreatedAt
+	// 把data添加到返回值
+	ret["data"] = data
 	c.JSON(retCode, gin.H{"ret": ret})
 	return
 }
