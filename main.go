@@ -9,7 +9,6 @@ import (
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
 	"os"
-	"time"
 )
 
 func main() {
@@ -28,10 +27,10 @@ func main() {
 
 	r := gin.New()
 	// session redis
-	store, _ := redis.NewStore(10, "tcp", utils.RedisAddress, utils.RedisPassword, []byte("secret"))
+	store, _ := redis.NewStore(10, "tcp", utils.SessionRedisAddress, utils.RedisPassword, []byte("secret"))
 	store.Options(sessions.Options{
-		MaxAge: int(30 * time.Minute), //30min
-		Path:   "/",
+		MaxAge: 300,
+		Path:   "/GinSession",
 	})
 	// 注册session
 	r.Use(sessions.Sessions("GinSession", store))

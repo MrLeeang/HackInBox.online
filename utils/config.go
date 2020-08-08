@@ -15,4 +15,4 @@ const (
 	RedisPassword = "ccadmin1QAZ"
 )
 
-var RedisAddress = fmt.Sprintf("%s:%s", RedisHost, RedisPort)
+var SessionRedisAddress = fmt.Sprintf("%s:%s", RedisHost, RedisPort)
