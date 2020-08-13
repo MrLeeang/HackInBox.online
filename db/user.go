@@ -3,6 +3,7 @@ package db
 import (
 	"HackInBox.online/models"
 	"HackInBox.online/utils"
+	"fmt"
 )
 
 // QueryUsers 查询所有用户
@@ -33,11 +34,12 @@ func GetUserByUuid(uuid string) models.UserModel {
 	return User
 }
 
-func DetailUsers(teamUuid string) []models.UserModel {
+func DetailUsers(key string, value string) []models.UserModel {
 	// 定义一个数组存放结构体
 	var UserList []models.UserModel
 	// 查询
-	var err = Engine.Where("team_uuid=?", teamUuid).Find(&UserList)
+	sqlString := fmt.Sprintf("%s=?", key)
+	var err = Engine.Where(sqlString, value).Find(&UserList)
 
 	if err != nil {
 		utils.UtilsLogger.Error(err)
