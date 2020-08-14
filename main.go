@@ -27,10 +27,9 @@ func main() {
 
 	r := gin.New()
 	// session redis
-	store, _ := redis.NewStore(10, "tcp", utils.SessionRedisAddress, utils.RedisPassword, []byte("secret"))
+	store, _ := redis.NewStore(1000, "tcp", utils.SessionRedisAddress, utils.RedisPassword, []byte("secret"))
 	store.Options(sessions.Options{
 		MaxAge: 300,
-		Path:   "/GinSession",
 	})
 	// 注册session
 	r.Use(sessions.Sessions("GinSession", store))

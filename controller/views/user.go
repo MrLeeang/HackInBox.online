@@ -55,9 +55,9 @@ func ActionLogin(c *gin.Context) {
 		return
 	}
 
-	userModels := service.GetUserByEmail(string(form.Email))
+	userModel := service.GetUserByEmail(string(form.Email))
 
-	if userModels == nil || userModels[0].Password != form.Password {
+	if userModel.Password != form.Password {
 		// 账号密码错误，登录失败
 		retCode := utils.RetCode.HttpUnAuthorized
 		ret["code"] = retCode
@@ -72,18 +72,18 @@ func ActionLogin(c *gin.Context) {
 
 	// 返回数据
 	var data = map[string]interface{}{}
-	data["Name"] = userModels[0].Name
-	data["Id"] = userModels[0].Id
-	data["Email"] = userModels[0].Email
-	data["DisplayName"] = userModels[0].DisplayName
-	data["Name"] = userModels[0].Name
-	data["TeamUuid"] = userModels[0].TeamUuid
-	data["CreatedAt"] = userModels[0].CreatedAt
+	data["Name"] = userModel.Name
+	data["Id"] = userModel.Id
+	data["Email"] = userModel.Email
+	data["DisplayName"] = userModel.DisplayName
+	data["Name"] = userModel.Name
+	data["TeamUuid"] = userModel.TeamUuid
+	data["CreatedAt"] = userModel.CreatedAt
 	// 把data添加到返回值
 	ret["data"] = data
 	// 写入session
 	session := sessions.Default(c)
-	session.Set("loginName", userModels[0].Name)
+	session.Set("loginName", userModel.Name)
 	_ = session.Save()
 	c.JSON(retCode, gin.H{"ret": ret})
 	return

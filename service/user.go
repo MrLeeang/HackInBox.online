@@ -17,6 +17,10 @@ func GetUserByTeamUuid(teamUuid string) []models.UserModel {
 	return db.DetailUsers("team_uuid", teamUuid)
 }
 
-func GetUserByEmail(email string) []models.UserModel {
-	return db.DetailUsers("email", email)
+func GetUserByEmail(email string) models.UserModel {
+	userModels := db.DetailUsers("email", email)
+	if userModels == nil {
+		return models.UserModel{}
+	}
+	return userModels[0]
 }
