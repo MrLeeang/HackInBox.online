@@ -5,8 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// MakRouter 是路由
-func MakRouter(r *gin.Engine) {
+// MakeRouter 是路由
+func MakeRouter(r *gin.Engine) {
 	// 登录
 	r.POST("/login", views.ActionLogin)
 	// 注册

@@ -36,8 +36,8 @@ func main() {
 	// 注册logger
 	r.Use(middleware.Logger())
 	// 注册路由
-	controller.MakRouter(r)
+	controller.MakeRouter(r)
 	// 启动
 	utils.UtilsLogger.Info("Server Run Success: 0.0.0.0:8080")
-	r.Run(":8080")
+	_ = r.Run(":8080")
 }
