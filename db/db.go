@@ -11,7 +11,14 @@ import (
 // CreateEngine 初始化数据库连接池
 func CreateEngine() *xorm.Engine {
 	var err error
-	dbString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", utils.DbUser, utils.DbPass, utils.DbHost, utils.DbPort, utils.DbName)
+	dbString := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8",
+		utils.DbUser,
+		utils.DbPass,
+		utils.DbHost,
+		utils.DbPort,
+		utils.DbName,
+	)
 	engine, err := xorm.NewEngine(utils.DbType, dbString)
 	if err != nil {
 		utils.UtilsLogger.Error(err)
