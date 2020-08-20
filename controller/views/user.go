@@ -3,7 +3,6 @@ package views
 import (
 	"HackInBox.online/service"
 	"HackInBox.online/utils"
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -81,10 +80,8 @@ func ActionLogin(c *gin.Context) {
 	data["CreatedAt"] = userModel.CreatedAt
 	// 把data添加到返回值
 	ret["data"] = data
-	// 写入session
-	session := sessions.Default(c)
-	session.Set("loginName", userModel.Name)
-	_ = session.Save()
+	tokenStr := service.GenerateToken(userModel.Id)
+	ret["token"] = tokenStr
 	c.JSON(retCode, gin.H{"ret": ret})
 	return
 }
