@@ -1,19 +1,19 @@
 package views
 
 import (
+	"HackInBox.online/service"
 	"HackInBox.online/utils"
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
 func AuthHandler() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		session := sessions.Default(context)
-		loginName := session.Get("loginName")
-		_ = session.Save()
-		if loginName == nil {
+		tokenStr := context.Request.Header.Get("token")
+		verify := service.VerifyToken(tokenStr)
+		utils.UtilsLogger.Info(verify)
+		if verify == nil {
 			var ret = map[string]interface{}{}
-			retCode := utils.RetCode.VerifyFailed
+			retCode := utils.RetCode.LoginError
 			ret["code"] = retCode
 			ret["ret_message"] = utils.ErrorCodeMessage[retCode]
 			context.JSON(200, gin.H{

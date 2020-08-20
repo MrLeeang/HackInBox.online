@@ -1,7 +1,5 @@
 package utils
 
-import "fmt"
-
 const (
 	DbType = "mysql"
 	DbHost = "118.31.237.114"
@@ -14,5 +12,3 @@ const (
 	RedisPort     = "6379"
 	RedisPassword = "ccadmin1QAZ"
 )
-
-var SessionRedisAddress = fmt.Sprintf("%s:%s", RedisHost, RedisPort)
