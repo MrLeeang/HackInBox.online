@@ -12,7 +12,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
-	github.com/gin-contrib/sessions v0.0.3
+	github.com/gin-contrib/sessions v0.0.3 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/sirupsen/logrus v1.6.0
