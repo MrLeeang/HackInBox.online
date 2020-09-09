@@ -15,7 +15,6 @@ func ActionUser(c *gin.Context) {
 	})
 }
 
-// ActionUserList ActionUserList
 func ActionUserList(c *gin.Context) {
 	ret := service.GetUsers()
 	c.JSON(200, gin.H{
